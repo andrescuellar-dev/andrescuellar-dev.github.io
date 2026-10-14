@@ -1,0 +1,692 @@
+<title>Andrés Cuéllar · Portafolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: perfil ejecutivo — barra de navegación fija, banda hero azul marino, servicios filtrables, visor de proyectos con pestañas y demos interactivas */
+:root{
+  --bg:#F4F6FA; --surface:#FFFFFF; --sunk:#EEF2F8; --ink:#0F1B2D; --muted:#5A6678; --line:#DCE3EE;
+  --navy:#0E2240; --navy-ink:#E9EFF8; --navy-muted:#A9B8CF;
+  --accent:#1E5EC8; --accent-strong:#164BA3; --accent-soft:#E2EBFA;
+  --amber:#A86A0C; --amber-soft:#F6EBD6; --red:#B23A3A; --red-soft:#F7E1E1; --slate:#4B5A70; --slate-soft:#E7EBF1;
+  --shadow:0 1px 2px rgba(15,27,45,.05),0 10px 30px rgba(15,27,45,.07);
+  --f-display:"Plus Jakarta Sans",ui-sans-serif,system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0A111D; --surface:#111B2B; --sunk:#0D1624; --ink:#E6ECF5; --muted:#97A6BC; --line:#1F2C40;
+  --navy:#0F1E36; --navy-ink:#E9EFF8; --navy-muted:#9FB0C9;
+  --accent:#6FA3F2; --accent-strong:#8DB6F5; --accent-soft:#16294A;
+  --amber:#E0A74A; --amber-soft:#33281A; --red:#EE8585; --red-soft:#3A1F24; --slate:#AEBBCD; --slate-soft:#1C2738;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.3); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0A111D; --surface:#111B2B; --sunk:#0D1624; --ink:#E6ECF5; --muted:#97A6BC; --line:#1F2C40;
+  --navy:#0F1E36; --navy-ink:#E9EFF8; --navy-muted:#9FB0C9;
+  --accent:#6FA3F2; --accent-strong:#8DB6F5; --accent-soft:#16294A;
+  --amber:#E0A74A; --amber-soft:#33281A; --red:#EE8585; --red-soft:#3A1F24; --slate:#AEBBCD; --slate-soft:#1C2738;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.3); color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1120px;margin:0 auto}
+h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.15;letter-spacing:-.01em}
+p{margin:0}
+.label{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* NAV */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:700;font-size:15px;color:var(--ink);text-decoration:none;white-space:nowrap}
+.mono{width:32px;height:32px;border-radius:8px;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;letter-spacing:.02em}
+.links{display:flex;gap:4px}
+.links a{font-size:14px;color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:6px}
+.links a:hover,.links a.on{color:var(--ink);background:var(--sunk)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:9px 16px;border-radius:8px;border:1px solid transparent;cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-strong)}
+.btn-ghost{border-color:var(--line);background:var(--surface);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* HERO */
+.hero{background:var(--navy);color:var(--navy-ink)}
+.hero .wrap{padding-block:72px 64px;display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:center}
+.hero .label{color:var(--navy-muted)}
+.hero h1{font-size:clamp(38px,6vw,64px);font-weight:800;margin-top:14px}
+.hero .role{font-size:18px;color:#9CC0FA;margin-top:12px;font-weight:500}
+.hero .thesis{font-size:18px;color:var(--navy-muted);margin-top:18px;max-width:54ch}
+.hero .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.hero .btn-ghost{background:transparent;border-color:rgba(233,239,248,.28);color:var(--navy-ink)}
+.hero .btn-ghost:hover{border-color:#9CC0FA;color:#fff}
+.card-id{background:rgba(255,255,255,.05);border:1px solid rgba(233,239,248,.14);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.id-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:12px;border-bottom:1px solid rgba(233,239,248,.1)}
+.id-row:last-child{border:0;padding:0}
+.id-row div{min-width:0}
+.id-row small{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy-muted)}
+.id-row strong{font-weight:500;font-size:15px;overflow-wrap:anywhere;user-select:all}
+.copy{font-family:var(--f-mono);font-size:11.5px;border:1px solid rgba(233,239,248,.25);background:transparent;color:var(--navy-ink);border-radius:6px;padding:5px 9px;cursor:pointer;flex:none}
+.copy:hover{border-color:#9CC0FA}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--navy-ink)}
+.status i{width:8px;height:8px;border-radius:50%;background:#6FA3F2;box-shadow:0 0 0 4px rgba(111,163,242,.2)}
+
+.metrics{background:var(--surface);border-bottom:1px solid var(--line)}
+.metrics .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.metric{padding:22px 20px;border-right:1px solid var(--line)}
+.metric:first-child{padding-left:0}
+.metric:last-child{border-right:0}
+.metric b{font-family:var(--f-display);font-size:26px;font-weight:800;display:block;color:var(--accent);font-variant-numeric:tabular-nums}
+.metric span{font-size:14px;color:var(--muted)}
+
+section.blk{padding-block:72px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px 32px;margin-bottom:32px}
+.sec-head h2{font-size:clamp(28px,3.6vw,38px);font-weight:800;margin-top:6px}
+.sec-head p{color:var(--muted);max-width:50ch}
+
+/* SERVICIOS */
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.fbtn{font-size:13.5px;font-weight:500;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);cursor:pointer;color:var(--muted)}
+.fbtn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .2s}
+.svc:hover{border-color:var(--accent);transform:translateY(-2px)}
+.svc .ico{width:40px;height:40px;border-radius:10px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center}
+.svc .ico svg{width:20px;height:20px}
+.svc .cat{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.svc h3{font-size:19px;font-weight:700}
+.svc p{color:var(--muted);font-size:15px}
+.svc ul{margin:4px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px;font-size:14px}
+.svc li{padding-left:16px;position:relative}
+.svc li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:6px;border-radius:2px;background:var(--accent)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:10px}
+.tag{font-family:var(--f-mono);font-size:11.5px;padding:3px 8px;border-radius:6px;background:var(--sunk);color:var(--slate);border:1px solid var(--line)}
+
+/* PROYECTOS */
+.viewer{display:grid;grid-template-columns:300px 1fr;gap:24px;align-items:start}
+.plist{display:flex;flex-direction:column;gap:8px}
+.ptab{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;cursor:pointer;display:flex;flex-direction:column;gap:2px}
+.ptab b{font-family:var(--f-display);font-size:15.5px;font-weight:700}
+.ptab span{font-size:13px;color:var(--muted)}
+.ptab[aria-selected="true"]{border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent);background:var(--accent-soft)}
+.ppanel{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.p-head{padding:24px 24px 18px;display:grid;grid-template-columns:1fr auto;gap:12px 24px;border-bottom:1px solid var(--line)}
+.p-head h3{font-size:24px;font-weight:800}
+.p-head .where{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);margin-top:4px}
+.p-head p{grid-column:1/-1;color:var(--muted);max-width:70ch}
+.p-points{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pt{background:var(--sunk);border-radius:8px;padding:12px;font-size:14px}
+.pt b{display:block;font-family:var(--f-display);font-size:13px;color:var(--accent);margin-bottom:2px}
+.demo{background:var(--sunk);padding:18px}
+.demo-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.demo-top .label{display:flex;align-items:center;gap:8px}
+.demo-top .label i{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.hint{font-size:12.5px;color:var(--muted)}
+
+/* demo pieces */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.kpi small{display:block;font-size:11.5px;color:var(--muted);line-height:1.3}
+.kpi b{font-family:var(--f-mono);font-size:19px;font-weight:500;font-variant-numeric:tabular-nums}
+.seg{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.seg button{font-size:12.5px;padding:5px 11px;border-radius:6px;border:1px solid var(--line);background:var(--surface);cursor:pointer;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:520px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--surface)}
+td.num{font-family:var(--f-mono);text-align:right;font-variant-numeric:tabular-nums}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:var(--sunk)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;padding:2px 9px;border-radius:999px;font-weight:600}
+.chip::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.c-ok{background:var(--accent-soft);color:var(--accent)}
+.c-warn{background:var(--amber-soft);color:var(--amber)}
+.c-bad{background:var(--red-soft);color:var(--red)}
+.c-info{background:var(--slate-soft);color:var(--slate)}
+
+.dash{display:grid;grid-template-columns:1.6fr 1fr;gap:10px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;min-width:0}
+.panel h4{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:8px}
+.panel svg{display:block;width:100%;height:auto}
+.bar-r{cursor:pointer;transition:opacity .15s}
+.readout{display:flex;gap:16px;font-size:13px;margin-top:6px;flex-wrap:wrap}
+.readout b{font-family:var(--f-mono);font-weight:500;font-variant-numeric:tabular-nums}
+.dep{display:flex;flex-direction:column;gap:10px}
+.dep-row{font-size:13px}
+.dep-row div:first-child{display:flex;justify-content:space-between}
+.dep-row b{font-family:var(--f-mono);font-weight:500;font-variant-numeric:tabular-nums}
+.meter{height:6px;background:var(--sunk);border-radius:3px;margin-top:4px;overflow:hidden;border:1px solid var(--line)}
+.meter i{display:block;height:100%;background:var(--accent);transition:width .5s ease}
+
+.course{display:grid;grid-template-columns:170px 1fr;gap:12px}
+.cnav{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px;font-size:13px;display:flex;flex-direction:column;gap:2px}
+.cnav div{padding:7px 9px;border-radius:6px;color:var(--muted)}
+.cnav .on{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.lesson{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.lesson h4{font-size:17px}
+.progress{display:flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.progress .meter{flex:1;margin:0}
+.acts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.act{border:1px solid var(--line);border-radius:8px;padding:12px;font-size:13px;display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--surface);cursor:pointer}
+.act:hover{border-color:var(--accent)}
+.act .ic{width:28px;height:28px;border-radius:7px;display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;font-weight:600;background:var(--sunk);color:var(--muted)}
+.act.done .ic{background:var(--accent);color:#fff}
+.act span{color:var(--muted);font-size:12px}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.tbtn{font-family:var(--f-mono);font-size:12px;padding:6px 11px;border:1px solid var(--line);border-radius:6px;background:var(--surface);cursor:pointer}
+.tbtn.prim{background:var(--accent);border-color:var(--accent);color:#fff}
+.sheet table{font-family:var(--f-mono);font-size:12px}
+.sheet .rh{color:var(--muted);text-align:center;background:var(--sunk);width:30px}
+.sheet td{border-right:1px solid var(--line)}
+tr.flag td{background:var(--red-soft)}
+.report{margin-top:10px;background:var(--surface);border:1px solid var(--accent);border-radius:8px;padding:12px 14px;font-size:13.5px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.report b{display:block;font-family:var(--f-mono);font-size:18px;font-weight:500;font-variant-numeric:tabular-nums}
+.report span{color:var(--muted);font-size:12px}
+.report p{grid-column:1/-1;font-size:12.5px;color:var(--muted)}
+.foot-note{font-size:12px;color:var(--muted);margin-top:14px}
+
+/* COMPETENCIAS */
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.skill{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px}
+.skill h3{font-size:16px;font-weight:700;margin-bottom:12px}
+.skill ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14.5px}
+.skill li{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dashed var(--line);padding-bottom:6px}
+.skill li:last-child{border:0;padding:0}
+.skill li span{font-family:var(--f-mono);font-size:11px;color:var(--accent);white-space:nowrap}
+
+/* EXPERIENCIA */
+.xp{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.job{border-bottom:1px solid var(--line)}
+.job:last-child{border:0}
+.job button{width:100%;display:grid;grid-template-columns:190px 1fr auto;gap:20px;align-items:center;text-align:left;padding:18px 22px;background:none;border:0;cursor:pointer}
+.job button:hover{background:var(--sunk)}
+.job .when{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.job h3{font-size:17px;font-weight:700}
+.job .org{font-size:14px;color:var(--accent);font-weight:500}
+.job .chev{width:22px;height:22px;transition:transform .2s;color:var(--muted)}
+.job[data-open="true"] .chev{transform:rotate(180deg)}
+.job .body{padding:0 22px 20px calc(190px + 42px)}
+.job .body ul{margin:0;padding-left:18px;color:var(--muted);font-size:15px;max-width:72ch;display:flex;flex-direction:column;gap:4px}
+.edu{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+.edu div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.edu b{display:block;font-size:14.5px;font-family:var(--f-display);line-height:1.3}
+.edu span{font-size:13px;color:var(--muted)}
+
+/* CTA */
+.cta{background:var(--navy);color:var(--navy-ink)}
+.cta .wrap{padding-block:56px;display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center}
+.cta h2{font-size:clamp(26px,3.6vw,38px);font-weight:800}
+.cta p{color:var(--navy-muted);margin-top:10px;max-width:46ch}
+footer{background:var(--navy);color:var(--navy-muted);border-top:1px solid rgba(233,239,248,.1);font-size:13px}
+footer .wrap{padding-block:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .links{display:none}
+  .hero .wrap,.cta .wrap{grid-template-columns:1fr}
+  .services,.skills{grid-template-columns:1fr 1fr}
+  .viewer{grid-template-columns:1fr}
+  .plist{flex-direction:row;overflow-x:auto;padding-bottom:4px}
+  .ptab{flex:0 0 220px}
+  .dash{grid-template-columns:1fr}
+  .metrics .wrap{grid-template-columns:1fr 1fr}
+  .metric{border-bottom:1px solid var(--line)}
+  .metric:first-child{padding-left:20px}
+  .edu{grid-template-columns:1fr 1fr}
+  .job button{grid-template-columns:1fr auto}
+  .job .when{grid-column:1/-1}
+  .job .body{padding-left:22px}
+}
+@media (max-width:560px){
+  .services,.skills,.edu{grid-template-columns:1fr}
+  .p-points,.acts,.report{grid-template-columns:1fr}
+  .p-head{grid-template-columns:1fr}
+  .kpis{grid-template-columns:1fr 1fr}
+  .course{grid-template-columns:1fr}
+  .cnav{flex-direction:row;overflow-x:auto}
+  .cnav div{white-space:nowrap}
+  .metrics .wrap{grid-template-columns:1fr}
+  .metric{border-right:0}
+  .brand .full{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<nav class="nav gut">
+  <div class="wrap">
+    <a class="brand" href="#inicio"><span class="mono">AC</span><span class="full">Andrés Cuéllar</span></a>
+    <div class="links">
+      <a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#competencias">Competencias</a><a href="#experiencia">Experiencia</a>
+    </div>
+    <a class="btn btn-primary" href="#contacto">Contactar</a>
+  </div>
+</nav>
+
+<header class="hero gut" id="inicio">
+  <div class="wrap">
+    <div>
+      <p class="label">Portafolio profesional · Bogotá, Colombia</p>
+      <h1>Andrés Camilo Cuéllar Quintero</h1>
+      <p class="role">Desarrollador Full Stack · Arquitectura de datos · Automatización de procesos</p>
+      <p class="thesis">Diseño y construyo aplicaciones web, bases de datos y tableros de control que convierten procesos administrativos complejos en información confiable para la toma de decisiones.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
+        <a class="btn btn-ghost" href="#servicios">Servicios</a>
+      </div>
+    </div>
+    <aside class="card-id" aria-label="Datos de contacto">
+      <div class="id-row"><span class="status"><i></i>Disponible para nuevos proyectos</span></div>
+      <div class="id-row"><div><small>Correo</small><strong>andres.cuellar.quintero@gmail.com</strong></div><button class="copy" type="button" data-copy="andres.cuellar.quintero@gmail.com">Copiar</button></div>
+      <div class="id-row"><div><small>Celular</small><strong>+57 314 363 4043</strong></div><button class="copy" type="button" data-copy="+573143634043">Copiar</button></div>
+      <div class="id-row"><div><small>Modalidad</small><strong>Remoto · Híbrido · Presencial</strong></div></div>
+    </aside>
+  </div>
+</header>
+
+<div class="metrics gut">
+  <div class="wrap">
+    <div class="metric"><b>10+ años</b><span>Sector educativo y público</span></div>
+    <div class="metric"><b>5 entidades</b><span>Públicas y de educación superior</span></div>
+    <div class="metric"><b>6 líneas</b><span>De servicio especializado</span></div>
+    <div class="metric"><b>End-to-end</b><span>Del dato a la interfaz</span></div>
+  </div>
+</div>
+
+<main>
+<section class="blk gut" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="label">Lo que ofrezco</p><h2>Servicios</h2></div>
+      <div class="filters" role="group" aria-label="Filtrar servicios">
+        <button class="fbtn" type="button" data-f="all" aria-pressed="true">Todos</button>
+        <button class="fbtn" type="button" data-f="dev" aria-pressed="false">Desarrollo</button>
+        <button class="fbtn" type="button" data-f="data" aria-pressed="false">Datos y BI</button>
+        <button class="fbtn" type="button" data-f="proc" aria-pressed="false">Procesos</button>
+      </div>
+    </div>
+    <div class="services" id="svcGrid">
+      <article class="svc" data-c="dev">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg></div>
+        <span class="cat">Desarrollo</span>
+        <h3>Aplicaciones web a la medida</h3>
+        <p>Sistemas de captura, consulta y seguimiento para equipos operativos.</p>
+        <ul><li>Interfaces SPA en React</li><li>Autenticación y roles</li><li>Reglas de negocio y validaciones</li></ul>
+        <div class="tags"><span class="tag">React</span><span class="tag">Supabase</span><span class="tag">SPA</span></div>
+      </article>
+      <article class="svc" data-c="dev data">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+        <span class="cat">Desarrollo · Datos</span>
+        <h3>Arquitectura de bases de datos</h3>
+        <p>Modelos relacionales que reflejan el proceso real y garantizan trazabilidad.</p>
+        <ul><li>Modelado en PostgreSQL</li><li>Integridad y seguridad de datos</li><li>Historial y auditoría</li></ul>
+        <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">SQL</span><span class="tag">Supabase</span></div>
+      </article>
+      <article class="svc" data-c="data">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+        <span class="cat">Datos y BI</span>
+        <h3>Tableros directivos</h3>
+        <p>Dashboards para seguimiento presupuestal, contractual y operativo.</p>
+        <ul><li>Modelado relacional y DAX</li><li>Inteligencia de tiempo</li><li>Indicadores para gerencia</li></ul>
+        <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Looker Studio</span></div>
+      </article>
+      <article class="svc" data-c="proc">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg></div>
+        <span class="cat">Procesos</span>
+        <h3>Automatización de flujos</h3>
+        <p>Menos trabajo manual en aprobaciones, notificaciones y reportes.</p>
+        <ul><li>Flujos en Power Automate</li><li>Apps en Power Apps</li><li>Macros y programación VBA</li></ul>
+        <div class="tags"><span class="tag">Power Automate</span><span class="tag">Power Apps</span><span class="tag">VBA</span></div>
+      </article>
+      <article class="svc" data-c="data proc">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg></div>
+        <span class="cat">Datos y BI · Procesos</span>
+        <h3>Limpieza y calidad de datos</h3>
+        <p>Depuración, cruce y estandarización de bases institucionales.</p>
+        <ul><li>Procesos ETL</li><li>Office Scripts y Power Query</li><li>Auditoría de calidad</li></ul>
+        <div class="tags"><span class="tag">ETL</span><span class="tag">Excel 365</span><span class="tag">Power Query</span></div>
+      </article>
+      <article class="svc" data-c="dev proc">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8l10-5 10 5-10 5z"/><path d="M6 10v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg></div>
+        <span class="cat">Desarrollo · Procesos</span>
+        <h3>Plataformas de formación virtual</h3>
+        <p>Aulas y cursos con seguimiento del avance de cada participante.</p>
+        <ul><li>Administración de Moodle</li><li>Paquetes SCORM</li><li>Recursos interactivos</li></ul>
+        <div class="tags"><span class="tag">Moodle</span><span class="tag">SCORM</span><span class="tag">Genially</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="blk gut" id="proyectos" style="background:var(--surface);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="label">Casos de trabajo</p><h2>Proyectos destacados</h2></div>
+      <p>Selecciona un proyecto y prueba la vista interactiva.</p>
+    </div>
+    <div class="viewer">
+      <div class="plist" role="tablist" aria-label="Proyectos">
+        <button class="ptab" role="tab" id="t-aos" aria-controls="p-aos" aria-selected="true"><b>Aplicación Operativa de Sustitución</b><span>DSCI · Desarrollo y datos</span></button>
+        <button class="ptab" role="tab" id="t-bi" aria-controls="p-bi" aria-selected="false"><b>Tableros de control directivo</b><span>DSCI · Power BI</span></button>
+        <button class="ptab" role="tab" id="t-uni" aria-controls="p-uni" aria-selected="false"><b>UNICORPORATIVA</b><span>UNIMINUTO · E-learning</span></button>
+        <button class="ptab" role="tab" id="t-est" aria-controls="p-est" aria-selected="false"><b>Seguimiento estudiantil</b><span>Politécnico Minuto de Dios · Automatización</span></button>
+      </div>
+
+      <div>
+      <!-- AOS -->
+      <div class="ppanel" role="tabpanel" id="p-aos" aria-labelledby="t-aos">
+        <div class="p-head">
+          <div><h3>Aplicación Operativa de Sustitución (AOS)</h3><p class="where">DSCI · 2025 – actualidad</p></div>
+          <div class="tags" style="padding:0"><span class="tag">React</span><span class="tag">Supabase</span><span class="tag">PostgreSQL</span></div>
+          <p>Sistema que centraliza el ciclo de contratación: creación de cupos, asignación financiera y seguimiento precontractual, contractual y poscontractual.</p>
+          <div class="p-points">
+            <div class="pt"><b>Reto</b>Información dispersa en múltiples bases, sin trazabilidad.</div>
+            <div class="pt"><b>Solución</b>Modelo relacional único y flujos de captura validados.</div>
+            <div class="pt"><b>Resultado</b>Estado de cada contrato consultable en tiempo real.</div>
+          </div>
+        </div>
+        <div class="demo">
+          <div class="demo-top"><span class="label"><i></i>Vista interactiva</span><span class="hint">Filtra por estado</span></div>
+          <div class="kpis">
+            <div class="kpi"><small>Contratos</small><b id="k-n">0</b></div>
+            <div class="kpi"><small>Valor total (M)</small><b id="k-v">0</b></div>
+            <div class="kpi"><small>Al día</small><b id="k-ok">0</b></div>
+            <div class="kpi"><small>Requieren acción</small><b id="k-act">0</b></div>
+          </div>
+          <div class="seg" role="group" aria-label="Filtrar contratos" id="aosSeg">
+            <button type="button" data-s="all" aria-pressed="true">Todos</button>
+            <button type="button" data-s="ok" aria-pressed="false">Al día</button>
+            <button type="button" data-s="warn" aria-pressed="false">Pago pendiente</button>
+            <button type="button" data-s="info" aria-pressed="false">En revisión</button>
+            <button type="button" data-s="bad" aria-pressed="false">Vencidos</button>
+          </div>
+          <div class="tbl-wrap"><table><thead><tr><th>Contrato</th><th>Etapa</th><th>Supervisor</th><th style="text-align:right">Valor (COP)</th><th>Estado</th></tr></thead><tbody id="aosBody"></tbody></table></div>
+          <p class="foot-note">Datos de ejemplo.</p>
+        </div>
+      </div>
+
+      <!-- BI -->
+      <div class="ppanel" role="tabpanel" id="p-bi" aria-labelledby="t-bi" hidden>
+        <div class="p-head">
+          <div><h3>Tableros de control directivo</h3><p class="where">DSCI · Power BI</p></div>
+          <div class="tags" style="padding:0"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Power Query</span></div>
+          <p>Tableros para la consulta, auditoría y toma de decisiones en honorarios, bienestar y comisiones.</p>
+          <div class="p-points">
+            <div class="pt"><b>Reto</b>Reportes consolidados a mano, con cifras que no coincidían.</div>
+            <div class="pt"><b>Solución</b>Modelo relacional con medidas DAX e inteligencia de tiempo.</div>
+            <div class="pt"><b>Resultado</b>Una sola fuente de cifras para la gerencia.</div>
+          </div>
+        </div>
+        <div class="demo">
+          <div class="demo-top"><span class="label"><i></i>Vista interactiva</span><span class="hint">Selecciona un mes</span></div>
+          <div class="dash">
+            <div class="panel">
+              <h4>Ejecución vs. programado (millones COP)</h4>
+              <svg id="chart" viewBox="0 0 320 170" role="img" aria-label="Ejecución mensual de honorarios"></svg>
+              <div class="readout" id="readout"></div>
+            </div>
+            <div class="panel">
+              <h4 id="depTitle">Avance por dependencia</h4>
+              <div class="dep" id="dep"></div>
+            </div>
+          </div>
+          <p class="foot-note">Datos de ejemplo.</p>
+        </div>
+      </div>
+
+      <!-- UNI -->
+      <div class="ppanel" role="tabpanel" id="p-uni" aria-labelledby="t-uni" hidden>
+        <div class="p-head">
+          <div><h3>UNICORPORATIVA · Formación para colaboradores</h3><p class="where">UNIMINUTO · 2024 – 2025</p></div>
+          <div class="tags" style="padding:0"><span class="tag">Moodle</span><span class="tag">SCORM</span><span class="tag">Genially</span></div>
+          <p>Sistematización del programa de formación interna: de documentos sueltos a cursos virtuales estandarizados y medibles.</p>
+          <div class="p-points">
+            <div class="pt"><b>Reto</b>Contenidos dispersos sin estructura ni seguimiento.</div>
+            <div class="pt"><b>Solución</b>Aulas con navegación común y recursos SCORM.</div>
+            <div class="pt"><b>Resultado</b>Avance de cada participante registrado.</div>
+          </div>
+        </div>
+        <div class="demo">
+          <div class="demo-top"><span class="label"><i></i>Vista interactiva</span><span class="hint">Marca actividades como completadas</span></div>
+          <div class="course">
+            <div class="cnav"><div>Bienvenida</div><div>Módulo 1 · Identidad</div><div class="on">Módulo 2 · Procesos</div><div>Módulo 3 · Servicio</div><div>Evaluación final</div></div>
+            <div class="lesson">
+              <p class="label">Módulo 2</p>
+              <h4>Cómo funcionan nuestros procesos</h4>
+              <div class="progress">Avance<div class="meter"><i id="uniBar" style="width:33%"></i></div><span id="uniPct">33%</span></div>
+              <div class="acts" id="acts">
+                <button class="act done" type="button"><span class="ic">✓</span><b>Video introductorio</b><span>6 min</span></button>
+                <button class="act" type="button"><span class="ic">2</span><b>Recorrido interactivo</b><span>Paquete SCORM</span></button>
+                <button class="act" type="button"><span class="ic">3</span><b>Evaluación del módulo</b><span>8 preguntas</span></button>
+              </div>
+            </div>
+          </div>
+          <p class="foot-note">Datos de ejemplo.</p>
+        </div>
+      </div>
+
+      <!-- EST -->
+      <div class="ppanel" role="tabpanel" id="p-est" aria-labelledby="t-est" hidden>
+        <div class="p-head">
+          <div><h3>Seguimiento de estudiantes en convenios</h3><p class="where">Fundación Politécnico Minuto de Dios · 2022 – 2023</p></div>
+          <div class="tags" style="padding:0"><span class="tag">Excel</span><span class="tag">VBA</span><span class="tag">Macros</span></div>
+          <p>Control y reporte en tiempo real de la población estudiantil en convenios como Agencia ATENEA y Jóvenes a la U.</p>
+          <div class="p-points">
+            <div class="pt"><b>Reto</b>Seguimiento manual de cientos de estudiantes.</div>
+            <div class="pt"><b>Solución</b>Base relacional con macros y reportes automáticos.</div>
+            <div class="pt"><b>Resultado</b>Alertas tempranas de riesgo de deserción.</div>
+          </div>
+        </div>
+        <div class="demo">
+          <div class="demo-top"><span class="label"><i></i>Vista interactiva</span><span class="hint">Ejecuta las macros</span></div>
+          <div class="toolbar">
+            <button class="tbtn prim" type="button" id="runReport">Generar reporte</button>
+            <button class="tbtn" type="button" id="runAlerts">Resaltar alertas</button>
+          </div>
+          <div class="tbl-wrap sheet"><table><thead><tr><th></th><th>Código</th><th>Programa</th><th>Convenio</th><th style="text-align:right">Asistencia</th><th>Riesgo</th></tr></thead><tbody id="estBody"></tbody></table></div>
+          <div class="report" id="report" hidden></div>
+          <p class="foot-note">Datos de ejemplo.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blk gut" id="competencias">
+  <div class="wrap">
+    <div class="sec-head"><div><p class="label">Stack técnico</p><h2>Competencias</h2></div><p>Herramientas que uso en proyectos reales, organizadas por capa.</p></div>
+    <div class="skills">
+      <div class="skill"><h3>Frontend</h3><ul><li>React<span>SPA</span></li><li>HTML · CSS</li><li>Diseño de interfaces<span>UX</span></li><li>Adobe Suite</li></ul></div>
+      <div class="skill"><h3>Backend y datos</h3><ul><li>Supabase<span>BaaS</span></li><li>PostgreSQL<span>SQL</span></li><li>Modelado relacional</li><li>Procesos ETL</li></ul></div>
+      <div class="skill"><h3>Business Intelligence</h3><ul><li>Power BI<span>DAX</span></li><li>Power Query<span>M</span></li><li>Looker Studio</li><li>Excel avanzado</li></ul></div>
+      <div class="skill"><h3>Microsoft 365</h3><ul><li>Power Automate</li><li>Power Apps</li><li>SharePoint · Lists</li><li>VBA · Office Scripts</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk gut" id="experiencia" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><div><p class="label">Trayectoria</p><h2>Experiencia</h2></div><p>Haz clic en cada cargo para ver el detalle.</p></div>
+    <div class="xp" id="xp">
+      <div class="job" data-open="true">
+        <button type="button" aria-expanded="true"><span class="when">Oct 2025 – Actualidad</span><span><h3>Gestor de Datos y Sistemas de Contratación</h3><span class="org">Dirección de Sustitución de Cultivos de Uso Ilícito</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="body"><ul><li>Estructuración y administración de la Aplicación Operativa de Sustitución (AOS).</li><li>Automatización del ciclo integral de contratación y supervisión en tiempo real.</li><li>Tableros directivos en Power BI para honorarios, bienestar y comisiones.</li><li>Rutinas ETL y depuración masiva de bases institucionales.</li></ul></div>
+      </div>
+      <div class="job" data-open="false">
+        <button type="button" aria-expanded="false"><span class="when">2024 – 2026 · Por periodos</span><span><h3>Profesional de Apoyo a la Evaluación Docente</h3><span class="org">Universidad Distrital Francisco José de Caldas</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="body" hidden><ul><li>Procesamiento, validación y cruce de bases de datos de evaluación docente.</li><li>Informes consolidados y reportes automatizados para el Comité de Evaluación.</li><li>Articulación técnica con las coordinaciones académicas.</li></ul></div>
+      </div>
+      <div class="job" data-open="false">
+        <button type="button" aria-expanded="false"><span class="when">Nov 2024 – Jul 2025</span><span><h3>Especialista en Virtualización de Contenidos</h3><span class="org">UNIMINUTO · UNICORPORATIVA</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="body" hidden><ul><li>Diseño y virtualización de cursos en Moodle con paquetes SCORM.</li><li>Recursos interactivos en Genially y producción audiovisual.</li><li>Optimización de la experiencia de usuario en entornos virtuales.</li></ul></div>
+      </div>
+      <div class="job" data-open="false">
+        <button type="button" aria-expanded="false"><span class="when">Feb 2022 – Dic 2023</span><span><h3>Profesional de Bienestar Universitario</h3><span class="org">Fundación Politécnico Minuto de Dios</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="body" hidden><ul><li>Herramientas y bases de datos con macros y VBA para el seguimiento de estudiantes en convenios estatales.</li><li>Gestión de micrositios web, salas de atención virtual y reportes de permanencia.</li></ul></div>
+      </div>
+      <div class="job" data-open="false">
+        <button type="button" aria-expanded="false"><span class="when">Ene 2016 – Feb 2022</span><span><h3>Asistente de Bienestar Universitario</h3><span class="org">UNIMINUTO</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="body" hidden><ul><li>Configuración de espacios virtuales, transmisiones en vivo y plataformas web.</li><li>Informes técnicos y análisis de indicadores de cobertura e impacto.</li></ul></div>
+      </div>
+    </div>
+    <div class="edu">
+      <div><b>Licenciado en Educación Artística</b><span>UNIMINUTO · 2021</span></div>
+      <div><b>Técnico Profesional en Sistemas</b><span>CNET · Neiva · 2007</span></div>
+      <div><b>Técnico Profesional Comercial, Bancario y Sistematizado</b><span>INCAP · Neiva · 2009</span></div>
+      <div><b>Diplomado en Modelos Educativos, Pedagogía y Currículo</b><span>UNIMINUTO · 2021</span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="cta gut" id="contacto">
+  <div class="wrap">
+    <div>
+      <p class="label" style="color:var(--navy-muted)">Contacto</p>
+      <h2>Hablemos de tu próximo proyecto</h2>
+      <p>Si tu equipo tiene un proceso que necesita una aplicación, un tablero o una automatización, conversemos.</p>
+    </div>
+    <div class="card-id">
+      <div class="id-row"><div><small>Correo</small><strong>andres.cuellar.quintero@gmail.com</strong></div><button class="copy" type="button" data-copy="andres.cuellar.quintero@gmail.com">Copiar</button></div>
+      <div class="id-row"><div><small>Celular</small><strong>+57 314 363 4043</strong></div><button class="copy" type="button" data-copy="+573143634043">Copiar</button></div>
+    </div>
+  </div>
+</section>
+<footer class="gut"><div class="wrap"><span>© 2026 Andrés Camilo Cuéllar Quintero</span><span>Bogotá, Colombia</span></div></footer>
+
+<script>
+(function(){
+  /* copiar */
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(){
+      var t=b.dataset.copy,o=b.textContent;
+      function ok(){b.textContent='Copiado';setTimeout(function(){b.textContent=o},1500)}
+      function sel(){var el=b.parentElement.querySelector('strong');if(!el)return;var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selecciona y copia'}
+      try{navigator.clipboard.writeText(t).then(ok,sel)}catch(e){sel()}
+    });
+  });
+
+  /* filtros de servicios */
+  var fb=document.querySelectorAll('.fbtn');
+  fb.forEach(function(b){b.addEventListener('click',function(){
+    fb.forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+    var f=b.dataset.f;
+    document.querySelectorAll('.svc').forEach(function(c){c.hidden=!(f==='all'||c.dataset.c.split(' ').indexOf(f)>-1)});
+  })});
+
+  /* pestañas de proyectos */
+  var tabs=document.querySelectorAll('.ptab');
+  tabs.forEach(function(t){t.addEventListener('click',function(){
+    tabs.forEach(function(x){x.setAttribute('aria-selected',x===t);document.getElementById(x.getAttribute('aria-controls')).hidden=(x!==t)});
+  })});
+
+  /* AOS */
+  var fmt=new Intl.NumberFormat('es-CO');
+  var contratos=[
+    ['CPS-2026-0412','Contractual','L. Rojas',42600000,'ok','Al día'],
+    ['CPS-2026-0398','Contractual','M. Pérez',38400000,'warn','Pago pendiente'],
+    ['CPS-2026-0455','Precontractual','J. Gómez',51000000,'info','En revisión'],
+    ['CPS-2026-0201','Poscontractual','A. Silva',29900000,'bad','Informe vencido'],
+    ['CPS-2026-0377','Contractual','L. Rojas',45200000,'ok','Al día'],
+    ['CPS-2026-0461','Precontractual','D. Torres',36800000,'info','En revisión'],
+    ['CPS-2026-0333','Contractual','M. Pérez',40100000,'ok','Al día'],
+    ['CPS-2026-0289','Contractual','J. Gómez',33500000,'warn','Pago pendiente']
+  ];
+  var aosBody=document.getElementById('aosBody');
+  function renderAOS(s){
+    var rows=contratos.filter(function(r){return s==='all'||r[4]===s});
+    aosBody.innerHTML=rows.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td class="num">'+fmt.format(r[3])+'</td><td><span class="chip c-'+r[4]+'">'+r[5]+'</span></td></tr>'}).join('');
+    document.getElementById('k-n').textContent=rows.length;
+    document.getElementById('k-v').textContent=fmt.format(Math.round(rows.reduce(function(a,r){return a+r[3]},0)/1e5)/10);
+    document.getElementById('k-ok').textContent=rows.filter(function(r){return r[4]==='ok'}).length;
+    document.getElementById('k-act').textContent=rows.filter(function(r){return r[4]==='warn'||r[4]==='bad'}).length;
+  }
+  var seg=document.querySelectorAll('#aosSeg button');
+  seg.forEach(function(b){b.addEventListener('click',function(){seg.forEach(function(x){x.setAttribute('aria-pressed',x===b)});renderAOS(b.dataset.s)})});
+  renderAOS('all');
+
+  /* BI chart */
+  var meses=[
+    {m:'May',e:500,p:550,d:[78,62,88,50]},
+    {m:'Jun',e:560,p:580,d:[80,64,89,52]},
+    {m:'Jul',e:620,p:610,d:[82,66,90,55]},
+    {m:'Ago',e:660,p:640,d:[84,67,91,57]},
+    {m:'Sep',e:710,p:670,d:[86,70,92,60]},
+    {m:'Oct',e:680,p:700,d:[88,72,93,63]}
+  ];
+  var deps=['Territorial Norte','Territorial Sur','Nivel central','Bienestar'];
+  var svg=document.getElementById('chart'),NS='http://www.w3.org/2000/svg';
+  var X0=34,X1=314,Y0=146,Y1=14,MIN=400,MAX=800;
+  function y(v){return Y0-(v-MIN)/(MAX-MIN)*(Y0-Y1)}
+  function el(n,a,t){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(t)e.textContent=t;svg.appendChild(e);return e}
+  [400,500,600,700,800].forEach(function(v){
+    el('line',{x1:X0,x2:X1,y1:y(v),y2:y(v),stroke:'var(--line)','stroke-width':1});
+    el('text',{x:X0-6,y:y(v)+3,'text-anchor':'end','font-size':9,'font-family':'IBM Plex Mono, monospace',fill:'var(--muted)'},v);
+  });
+  var step=(X1-X0)/meses.length,bw=24,bars=[],pts=[];
+  meses.forEach(function(d,i){
+    var cx=X0+step*i+step/2;
+    var r=el('rect',{x:cx-bw/2,y:y(d.e),width:bw,height:Y0-y(d.e),rx:3,fill:'var(--accent)','class':'bar-r',tabindex:0,role:'button','aria-label':d.m+': '+d.e+' millones'});
+    r.addEventListener('click',function(){sel(i)});
+    r.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();sel(i)}});
+    bars.push(r);pts.push(cx+','+y(d.p));
+    el('text',{x:cx,y:Y0+14,'text-anchor':'middle','font-size':9.5,'font-family':'IBM Plex Mono, monospace',fill:'var(--muted)'},d.m.toUpperCase());
+  });
+  el('polyline',{points:pts.join(' '),fill:'none',stroke:'var(--amber)','stroke-width':2,'stroke-dasharray':'4 3'});
+  meses.forEach(function(d,i){el('circle',{cx:X0+step*i+step/2,cy:y(d.p),r:3,fill:'var(--surface)',stroke:'var(--amber)','stroke-width':2})});
+  function sel(i){
+    var d=meses[i];
+    bars.forEach(function(b,j){b.style.opacity=j===i?1:.35});
+    var dif=d.e-d.p;
+    document.getElementById('readout').innerHTML='<span>'+d.m+' · Ejecutado <b>'+d.e+'</b></span><span>Programado <b style="color:var(--amber)">'+d.p+'</b></span><span>Diferencia <b style="color:'+(dif>=0?'var(--accent)':'var(--red)')+'">'+(dif>=0?'+':'')+dif+'</b></span>';
+    document.getElementById('depTitle').textContent='Avance por dependencia · '+d.m;
+    document.getElementById('dep').innerHTML=deps.map(function(n,k){return '<div class="dep-row"><div><span>'+n+'</span><b>'+d.d[k]+'%</b></div><div class="meter"><i style="width:'+d.d[k]+'%"></i></div></div>'}).join('');
+  }
+  sel(5);
+
+  /* UNI */
+  var acts=document.querySelectorAll('#acts .act');
+  function upd(){var n=document.querySelectorAll('#acts .act.done').length,p=Math.round(n/acts.length*100);document.getElementById('uniBar').style.width=p+'%';document.getElementById('uniPct').textContent=p+'%'}
+  acts.forEach(function(a,i){a.addEventListener('click',function(){a.classList.toggle('done');a.querySelector('.ic').textContent=a.classList.contains('done')?'✓':(i+1)});});
+  acts.forEach(function(a){a.addEventListener('click',upd)});
+
+  /* EST */
+  var est=[
+    ['EST-1041','Tec. Logística','ATENEA',96],['EST-1057','Tec. Sistemas','Jóvenes a la U',71],
+    ['EST-1063','Tec. Contable','ATENEA',48],['EST-1078','Tec. Sistemas','ATENEA',89],
+    ['EST-1082','Tec. Logística','Jóvenes a la U',62],['EST-1095','Tec. Contable','ATENEA',93]
+  ];
+  function riesgo(a){return a>=85?['c-ok','Bajo']:a>=60?['c-warn','Medio']:['c-bad','Alto']}
+  var estBody=document.getElementById('estBody');
+  estBody.innerHTML=est.map(function(r,i){var k=riesgo(r[3]);return '<tr data-a="'+r[3]+'"><td class="rh">'+(i+2)+'</td><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td class="num">'+r[3]+'%</td><td><span class="chip '+k[0]+'">'+k[1]+'</span></td></tr>'}).join('');
+  document.getElementById('runAlerts').addEventListener('click',function(){
+    var on=this.classList.toggle('prim');
+    estBody.querySelectorAll('tr').forEach(function(tr){tr.classList.toggle('flag',on&&+tr.dataset.a<60)});
+  });
+  document.getElementById('runReport').addEventListener('click',function(){
+    var prom=Math.round(est.reduce(function(a,r){return a+r[3]},0)/est.length);
+    var alto=est.filter(function(r){return r[3]<60}).length,medio=est.filter(function(r){return r[3]>=60&&r[3]<85}).length;
+    var rep=document.getElementById('report');
+    rep.innerHTML='<div><b>'+est.length+'</b><span>Estudiantes</span></div><div><b>'+prom+'%</b><span>Asistencia promedio</span></div><div><b>'+(alto+medio)+'</b><span>En seguimiento</span></div><p>Reporte de permanencia generado: '+alto+' en riesgo alto y '+medio+' en riesgo medio.</p>';
+    rep.hidden=false;
+  });
+
+  /* experiencia */
+  document.querySelectorAll('.job').forEach(function(j){
+    var b=j.querySelector('button'),body=j.querySelector('.body');
+    b.addEventListener('click',function(){var o=j.dataset.open!=='true';j.dataset.open=o;b.setAttribute('aria-expanded',o);body.hidden=!o});
+  });
+
+  /* nav activo */
+  var links=document.querySelectorAll('.links a');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-45% 0px -50% 0px'});
+    ['servicios','proyectos','competencias','experiencia'].forEach(function(id){var s=document.getElementById(id);if(s)io.observe(s)});
+  }
+})();
+</script>
